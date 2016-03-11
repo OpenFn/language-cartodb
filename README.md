@@ -6,19 +6,18 @@ Language Pack for sending messages using the [cartodb API](http://docs.cartodb.c
 Documentation
 -------------
 
-## Desired output:
-`https://{account}.cartodb.com/api/v2/sql?q={SQL statement}&api_key={Your API key}`
-
-Expression returns body = `INSERT INTO untitled_table (name, the_geom) VALUES ('openFn test', ST_SetSRID(ST_Point(-110, 43),4326))`
-
-## insert row
-
-#### desired `sql` expression:
 ```js
-sql("operation", "table_name", fields(
-  field("column_a", dataValue("recipient_number")),
-  field("column_b", dataValue("recipient_text"))
-))
+sql(
+  function(state) {
+    return (
+      `INSERT INTO untitled_table (name, the_geom) VALUES ('`
+      + dataValue("form.first_name")(state)
+      + `', ST_SetSRID(ST_Point(`
+        + dataValue("lat")(state) + `, `
+        + dataValue("long")(state) + `),4326))`
+    )
+  }
+)
 ```
 
 Development

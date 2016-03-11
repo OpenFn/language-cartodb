@@ -39,8 +39,8 @@ export function execute(...operations) {
 export function sql(sqlQuery) {
 
   return state => {
-    const body = sqlQuery;
-    // const body = expandReferences(sqlQuery)(state);
+
+    const body = sqlQuery(state);
 
     const { account, apiKey } = state.configuration;
 
