@@ -13,14 +13,11 @@ Expression returns body = `INSERT INTO untitled_table (name, the_geom) VALUES ('
 
 ## insert row
 
-#### Current `insert` expression:
+#### desired `sql` expression:
 ```js
-sql("table", fields(
-  field("to_number", dataValue("recipient_number")),
-  field("content", dataValue("recipient_text")),
-  // Lots of optional parameters...
-  field("message_type", "sms"),
-  field("route_id", dataValue("some_route")
+sql("operation", "table_name", fields(
+  field("column_a", dataValue("recipient_number")),
+  field("column_b", dataValue("recipient_text"))
 ))
 ```
 
