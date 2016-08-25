@@ -7,6 +7,13 @@ Documentation
 -------------
 
 ```js
+addRow("table", fields(
+  field("lat", dataValue("gps-Lattitude")),
+  field("long", dataValue("gps-Longitude"))
+))
+```
+
+```js
 sql(
   function(state) {
     return (
