@@ -3,6 +3,8 @@ import { post } from './Client';
 import { resolve as resolveUrl } from 'url';
 var jsonSql = require('json-sql')();
 
+/** @module Adaptor */
+
 /**
  * Execute a sequence of operations.
  * Wraps `language-common/execute`, and prepends initial state for cartodb.
@@ -92,11 +94,11 @@ export function addRow(table, rowData) {
     console.log("Executing SQL query:");
     console.log(body)
 
-    // return post({ apiKey, body, account, url })
-    // .then((result) => {
-    //   console.log("Success:", result);
-    //   return { ...state, references: [ result, ...state.references ] }
-    // })
+    return post({ apiKey, body, account, url })
+    .then((result) => {
+      console.log("Success:", result);
+      return { ...state, references: [ result, ...state.references ] }
+    })
 
   }
 }
