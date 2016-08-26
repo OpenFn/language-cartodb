@@ -7,9 +7,13 @@ Documentation
 -------------
 
 ```js
-addRow("table", fields(
-  field("lat", dataValue("gps-Lattitude")),
-  field("long", dataValue("gps-Longitude"))
+addRow("your_table", fields(
+  field("name", "taylor"),
+  field("lat", dataValue("lat")),
+  field("long", dataValue("long")),
+  field("mookie", dataValue("form.blaylock")),
+  field("description", dataValue("type_description")),
+  field("date", dataValue("SubmissionDate"))
 ))
 ```
 

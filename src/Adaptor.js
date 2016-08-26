@@ -47,7 +47,7 @@ export function sql(sqlQuery) {
 
     const { account, apiKey } = state.configuration;
 
-    const url = 'https://'.concat(account, '.cartodb.com/api/v2/sql')
+    const url = 'https://'.concat(account, '.carto.com/api/v2/sql')
 
     console.log(url)
     console.log("Executing SQL query:");
@@ -80,15 +80,20 @@ export function addRow(table, rowData) {
 
     const sql = jsonSql.build({
         type: 'insert',
-        table: 'users',
+        table: table,
         values: dataObject
     });
 
-    const body = sql.query
+    const body = Object.keys(sql.values).reduce(
+      function(query, valueKey) {
+        return query.replace(`\$${valueKey}`, `'${sql.values[valueKey]}'`)
+      },
+      sql.query
+    )
 
     const { account, apiKey } = state.configuration;
 
-    const url = 'https://'.concat(account, '.cartodb.com/api/v2/sql')
+    const url = 'https://'.concat(account, '.carto.com/api/v2/sql')
 
     console.log(url)
     console.log("Executing SQL query:");
@@ -104,6 +109,6 @@ export function addRow(table, rowData) {
 }
 
 export {
-  field, fields, sourceValue,
+  field, fields, sourceValue, each,
   merge, dataPath, dataValue, lastReferenceValue
 } from 'language-common';
