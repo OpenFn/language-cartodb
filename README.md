@@ -6,6 +6,17 @@ Language Pack for sending messages using the [cartodb API](http://docs.cartodb.c
 Documentation
 -------------
 
+## Sample configuration
+
+```json
+{
+  "account": "oepnfn",
+  "apiKey": "longsecretapikey"
+}
+```
+
+## Examples
+
 ```js
 addRow("your_table", fields(
   field("name", "taylor"),
